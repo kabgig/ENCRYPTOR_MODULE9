@@ -7,29 +7,33 @@ public class Main {
         String keyWord = "B2FutfZ3qHxhX9JJWZa0eUyqiGWJsIwL6FWmV32ggEFaJnBteoYZCYYWvxGHS929";
         char[] key = new char[keyWord.length()];
         for (int i = 0; i < keyWord.length(); i++) {
-            key [i] = keyWord.charAt(i);
+            key[i] = keyWord.charAt(i);
         }
 
-        //Getting source word for encryption
         Scanner s = new Scanner(System.in);
+        //Encrypt or Decrypt
+        System.out.println("1 - Encrypt");
+        System.out.println("2 - Decrypt");
+        String command = s.next();
+
+        //Getting source word for encryption
+        String srcWord = "";
         System.out.print("Input: ");
-        String srcWord = s.next();
-        // взять Hex код символа ключа
-        //прибавить первую цифру к HEX коду символа слова
-        //получили новый код буквы
-        //обратно так же берем первую цифру hex кода ключа и вычитаем из зашифрованного символа hex кода
-        //получается hex код слова
+        while (s.hasNext()){
+            srcWord = srcWord + " " + s.next();
+        }
+        srcWord.trim();
+        System.out.println(srcWord);
+
         int count = 0;
         StringBuilder bldr = new StringBuilder(srcWord);
 
-        for (int i = 0; i < srcWord.length() ; i++) {
-            if (count == key.length) count = 0;
-            int a = srcWord.charAt(i);
-            int b = key[i];
-
-            bldr.setCharAt(i+a, key[count++]);
+        if (command.equals("1")) {
+            var res =
+                    Encrypt.encryption
+                            (bldr, key, srcWord, count,command);
+            System.out.println(res);
         }
-
 
     }
 }
