@@ -14,26 +14,21 @@ public class Main {
         //Encrypt or Decrypt
         System.out.println("1 - Encrypt");
         System.out.println("2 - Decrypt");
-        String command = s.next();
+        String command = s.nextLine();
 
         //Getting source word for encryption
         String srcWord = "";
         System.out.print("Input: ");
-        while (s.hasNext()){
-            srcWord = srcWord + " " + s.next();
-        }
-        srcWord.trim();
+        srcWord = s.nextLine();
         System.out.println(srcWord);
 
         int count = 0;
         StringBuilder bldr = new StringBuilder(srcWord);
+        //Encrypting/Decrypting
+        var res = Encrypt.encryption
+                (bldr, key, srcWord, count, command);
+        System.out.println(res);
 
-        if (command.equals("1")) {
-            var res =
-                    Encrypt.encryption
-                            (bldr, key, srcWord, count,command);
-            System.out.println(res);
-        }
 
     }
 }
